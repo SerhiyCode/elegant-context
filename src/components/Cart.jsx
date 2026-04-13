@@ -1,7 +1,8 @@
 import { useContext } from "react"; 
 import { CartContext } from "../store/shopping-cart-cart-context"; 
 
-export default function Cart({ onUpdateItemQuantity }) { 
+export default function Cart({ onUpdateItemQuantity }) {  
+  
   const cartCtx = useContext(CartContext);
   const items = cartCtx.items;
 
@@ -16,7 +17,7 @@ export default function Cart({ onUpdateItemQuantity }) {
       {items.length === 0 && <p>No items in cart!</p>}
       {items.length > 0 && (
         <ul id="cart-items">
-          {items.map((item) => {
+          { items.map((item) => {
             const formattedPrice = `$${item.price.toFixed(2)}`;
 
             return (
