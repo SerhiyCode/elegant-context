@@ -9,7 +9,7 @@ import { CartContext } from './store/shopping-cart-cart-context.jsx';
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
     items: [],
-  });
+  }); 
 
   function handleAddItemToCart(id) {
     setShoppingCart((prevShoppingCart) => {
@@ -65,24 +65,24 @@ function App() {
         items: updatedItems,
       };
     });
-  }
+  } 
 
-  const ctxValue = {
+const ctxValue = {
     items: shoppingCart.items,
-    onAddItemToCart: handleAddItemToCart, 
+    addItemToCart: handleAddItemToCart, 
+    updatedItemQuantity: handleUpdateCartItemQuantity
   };
 
+
   return (
-    <CartContext.Provider value={shoppingCart}> 
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity} />
+    <CartContext.Provider value={ctxValue}> 
+      <Header />
       <Shop onAddItemToCart={handleAddItemToCart}> 
-      {DUMMY_PRODUCTS.map((product) => { 
-        <li key={product.id}> 
-          <Product {...product} onAddToCart={handleAddItemToCart} /> 
-        </li>  
-      })}
+      {DUMMY_PRODUCTS.map((product) => (
+          <li key={product.id}> 
+            <Product {...product} /> 
+          </li>  
+        ))}
       </Shop >
     </CartContext.Provider>
   );
