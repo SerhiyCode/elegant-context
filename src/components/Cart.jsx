@@ -2,11 +2,10 @@ import { useContext } from "react";
 import { CartContext } from "../store/shopping-cart-cart-context"; 
 
 export default function Cart() {  
-  
   const {items, updateItemQuantity} = useContext(CartContext);
 
   const totalPrice = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.price * item.quantity,  
     0
   );
   const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
